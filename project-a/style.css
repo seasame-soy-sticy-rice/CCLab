@@ -5,95 +5,161 @@ Project A: Generative Creatures
 CCLaboratories Biodiversity Atlas 
 */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: white;
-    color: DimGray;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-    line-height: 1.5em;
+    margin: 0;
+    background: #e9e8e2;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
-/* title */
 #title-wrapper {
-    text-align: center;
+    padding: 55px 7% 35px;
+    border-bottom: 2px solid #171717;
 }
 
-.headline {
-    font-size: 3em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 600;
-    margin-top: 80px;
+.eyebrow,
+.section-label {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.eyebrow {
+    color: #b52626;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: clamp(42px, 8vw, 90px);
+    line-height: 1;
+    letter-spacing: -4px;
+}
+
+.subtitle {
+    max-width: 600px;
+    color: #555;
+}
+
+#main-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 7%;
+}
+
+.specimen {
     margin-bottom: 60px;
 }
 
-/* main content */
-#main-wrapper {
-    width: 800px;
-    position: relative;
-    margin: auto;
+.section-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid #171717;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
 }
 
-.black {
-    color: black;
+#sketch-holder {
+    width: 100%;
+    background: #d7d6d0;
+    border: 1px solid #171717;
+    overflow: hidden;
 }
 
-.red {
-    color: DeepPink;
+#sketch-holder canvas {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
 }
 
-.green {
-    color: LightSeaGreen;
-}
-
-.yellow {
-    color: GoldenRod;
+.instruction {
+    font-family: monospace;
+    font-size: 13px;
+    color: #555;
 }
 
 .two-columns {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    padding: 35px 0;
+    border-top: 1px solid #171717;
+    border-bottom: 1px solid #171717;
 }
 
-.left {
-    width: 50%;
-    padding: 0px 10px 0px 0px;
+h2 {
+    margin-top: 28px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.right {
-    width: 50%;
-    padding: 0px 0px 0px 10px;
+.column h2:first-child,
+.one-column h2:first-child {
+    margin-top: 0;
+}
+
+.column p,
+.column li,
+.one-column p {
+    font-size: 15px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.one-column {
+    max-width: 850px;
+    padding: 45px 0;
+}
+
+.one-column h2:not(:first-child) {
+    margin-top: 40px;
 }
 
 #footer {
-    text-align: center;
-    font-size: 0.7em;
-    margin-top: 60px;
-    padding-bottom: 30px;
+    background: #171717;
+    color: #e9e8e2;
+    padding: 28px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-size: 13px;
 }
 
-/* home button */
-#home a {
-    position: fixed;
-    right: 15px;
-    top: 15px;
-    padding: 5px 10px;
-    color: dimgrey;
-    border: solid grey 0.5px;
-    font-size: 0.6em;
-    text-decoration: none;
+#footer a {
+    color: #e9e8e2;
 }
 
-#home a:hover {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-}
+@media (max-width: 650px) {
+    #title-wrapper {
+        padding-top: 35px;
+    }
 
-/* p5.js sketch */
-canvas {
-    display: block;
-}
+    h1 {
+        letter-spacing: -2px;
+    }
 
-main {
-    margin: auto;
-    width: 800px;
+    .section-label {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
