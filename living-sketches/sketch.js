@@ -32,6 +32,7 @@ function draw() {
 
 function mousePressed() {
   flowerShow = true;
+  console.log("Mouse pressed!");
 }
 
 function showImage(img) {
