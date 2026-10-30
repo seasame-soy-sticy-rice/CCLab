@@ -6,7 +6,7 @@ async function setup() {
 
   let allPromises = [];
 
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= 4; i++) {
     let filename = "assets/konig" + i + ".png";
     // add loadImage promise to array without awaiting sequentially
     let onePromise = loadImage(filename); //images break for loop, put promise into promises, images await & recollect promises
@@ -19,7 +19,19 @@ async function setup() {
 function draw() {
   background(220);
 
-  imageIndex = frameCount; //% as module
+  if (imgs.length > 0) {
+    imageIndex = floor(frameCount / 100) % imgs.length;
 
-  image(imgs[imageIndex], 0, 0);
+    let img = imgs[imageIndex];
+
+    let scaleFactor = min(400 / img.width, 400 / img.height);
+
+    let newWidth = img.width * scaleFactor;
+    let newHeight = img.height * scaleFactor;
+
+    let x = (400 - newWidth) / 2;
+    let y = (400 - newHeight) / 2;
+
+    image(img, x, y, newWidth, newHeight);
+  }
 }
