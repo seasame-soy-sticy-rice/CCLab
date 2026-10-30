@@ -1,5 +1,7 @@
 let imgs = []; //empty array
+let flower;
 let imageIndex = 0;
+let flowerShow = false;
 
 async function setup() {
   createCanvas(400, 400);
@@ -14,24 +16,31 @@ async function setup() {
   }
 
   imgs = await Promise.all(allPromises); //loadImage out to save time as a pack of promises
+  flower = await loadImage("assets/flower.png");
 }
 
 function draw() {
   background(220);
 
-  if (imgs.length > 0) {
-    imageIndex = floor(frameCount / 100) % imgs.length;
-
-    let img = imgs[imageIndex];
-
-    let scaleFactor = min(400 / img.width, 400 / img.height);
-
-    let newWidth = img.width * scaleFactor;
-    let newHeight = img.height * scaleFactor;
-
-    let x = (400 - newWidth) / 2;
-    let y = (400 - newHeight) / 2;
-
-    image(img, x, y, newWidth, newHeight);
+  if (flowerShow && flower) {
+    showImage(flower);
+  } else if (imgs.length > 0) {
+    imageIndex = min(floor(frameCount / 100), imgs.length - 1);
+    showImage(imgs[imageIndex]);
   }
+}
+
+function mousePressed() {
+  flowerShow = true;
+}
+
+function showImage(img) {
+  let scaleFactor = min(400 / img.width, 400 / img.height);
+  let newWidth = img.width * scaleFactor;
+  let newHeight = img.height * scaleFactor;
+
+  let x = (400 - newWidth) / 2;
+  let y = (400 - newHeight) / 2;
+
+  image(img, x, y, newWidth, newHeight);
 }
