@@ -7,7 +7,7 @@ async function setup() {
   let allPromises = [];
 
   for (let i = 1; i <= 11; i++) {
-    let filename = "assets/konig" + i + ".jpg";
+    let filename = "assets/konig" + i + ".png";
     // add loadImage promise to array without awaiting sequentially
     let onePromise = loadImage(filename); //images break for loop, put promise into promises, images await & recollect promises
     allPromises.push(onePromise);
