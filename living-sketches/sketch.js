@@ -19,14 +19,7 @@ async function setup() {
 function draw() {
   background(220);
 
-  imageIndex = frameCount % 11; //% as module
+  imageIndex = frameCount; //% as module
 
   image(imgs[imageIndex], 0, 0);
-}
-
-function mousePressed() {
-  imageIndex++;
-  if (imageIndex >= 11) {
-    imageIndex = 0;
-  }
 }
