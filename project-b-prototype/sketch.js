@@ -45,7 +45,6 @@ function draw() {
 
 
 
-//Room structure
 function drawRoom() {
   //wall
   room.background("#d9a99e");
@@ -77,7 +76,6 @@ function drawRoom() {
 
 
 
-//2. Window
 function drawWindow() {
   let sunlight = sin(frameCount * 0.008) * 8;
   room.fill("#8b5f4d");
@@ -406,12 +404,10 @@ function updateDogBlink() {
   if (dogNextBlinkFrame === 0) {
     dogNextBlinkFrame = frameCount + random(180, 360);
   }
-  if (dogBlinkUntil === 0 &&
-    frameCount >= dogNextBlinkFrame) {
+  if (dogBlinkUntil === 0 && frameCount >= dogNextBlinkFrame) {
     dogBlinkUntil = frameCount + 5;
   }
-  if (dogBlinkUntil > 0 &&
-    frameCount >= dogBlinkUntil) {
+  if (dogBlinkUntil > 0 && frameCount >= dogBlinkUntil) {
     dogBlinkUntil = 0;
     dogNextBlinkFrame = frameCount + random(180, 420);
   }
